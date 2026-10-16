@@ -2,9 +2,11 @@
 
 Lab 2 – JavaScript for Web Development, Högskolan Kristianstad (HT26)
 
+Target Grade = 3
+
 ## Description
 
-A personal portfolio website built with HTML, CSS and JavaScript.
+A personal portfolio website built with HTML, CSS and JavaScript. Aiming to meet criterias for level 3 grade track.
 
 ## Features
 
