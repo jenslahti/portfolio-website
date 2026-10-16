@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jens Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Semantic HTML element Header -->
+    <header>
+      <h1>Jens Portfolio</h1>
+      <!-- Semantic HTML element Nav with navigation links -->
+      <nav>
+        <ul>
+          <li><a href="#about-me">About me</a></li>
+          <li><a href="#my-skills">My skills</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- Link to external page as per assignment -->
+          <li>
+            <a
+              href="https://github.com/jenslahti/"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Semantic HTML element Main -->
+    <main>
+      <!-- Semantic HTML element Section for introduction -->
+      <section id="introduction">
+        <h2>Welcome to my portfolio!</h2>
+      </section>
+      <!-- Semantic HTML element Section for about me -->
+      <section id="about-me">
+        <h2>About me</h2>
+        <div class="bio">
+          <div class="bio-text">
+            <h3>Biography</h3>
+            <p>
+              Hello! My name is Jens and I am currently a student in the
+              JavaScript for Web Development course at Högskolan Kristianstad. I
+              grew up in a small border town in northern Sweden in the 90s. As
+              you can imagine, technology was limited. One of my early memories
+              was when my mother got a work laptop that I could play simple
+              games on. I played almost every evening and from there on my
+              interest in computers and technology just exploded!
+            </p>
+          </div>
+          <!-- Profile picture with alt text as per assignment -->
+          <img
+            src="images/profile-picture.jpg"
+            alt="Picture of me working on this assignment a late thursday night."
+          />
+        </div>
+        <h3>Academic interest &amp; Hobbies</h3>
+        <p>
+          My interest in this academic field came naturally after years behind
+          the computer screen: playing e-sports, modding and scripting games as
+          well as countless hours spent browsing internet forums etc. I am
+          interested in web development as it combines creativity with technical
+          skills. I like to build and create, both physical and digital. The
+          process of creating something from scratch and see it come to life
+          satisfies me every time. Does not matter if its a web site or an IKEA
+          table! In my free time some of my hobbies include:
+        </p>
+        <!-- List element as per assignment -->
+        <ul>
+          <li>Football &amp; Sports</li>
+          <li>Travel &amp; Culture</li>
+          <li>Health &amp; Fitness</li>
+        </ul>
+        <h3>Future goals</h3>
+        <p>
+          My future goal is to become a Solution Architect with great expertise
+          in web development and other areas. I strive to continuously learn and
+          improve my skills in this field and love to be part of the whole
+          process from idea to finalized product!
+        </p>
+        <h3 id="my-skills">My skills</h3>
+        <!-- Table with header, caption, rows and cells as per assignment -->
+        <table>
+          <caption>
+            Web development and software engineering
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Skill</th>
+              <th scope="col">Level</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Python</td>
+              <td>Beginner</td>
+            </tr>
+            <tr>
+              <td>Java</td>
+              <td>Beginner</td>
+            </tr>
+            <tr>
+              <td>Interaction Design</td>
+              <td>Intermediate</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- Semantic HTML element section for gallery -->
+      <section id="gallery">
+        <h2>Gallery</h2>
+        <!-- Images with alt text as per assignment -->
+        <div class="gallery-images">
+          <img
+            src="images/hometown.jpg"
+            alt="A photo from my hometown during an evening walk."
+          />
+          <img
+            src="images/kuala-lumpur.jpg"
+            alt="Photo from one of my recent travels to Kuala Lumpur"
+          />
+          <img
+            src="images/beach.jpg"
+            alt="A beautiful white sand beach I visited during my trip"
+          />
+        </div>
+      </section>
+      <!-- Semantic HTML section for contact form -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <!-- Contact form with mailto function as per assignment -->
+        <form
+          action="mailto:jens.lahti0176@stud.hkr.se"
+          method="post"
+          enctype="text/plain"
+        >
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+    <!-- Semantic HTML element Footer -->
+    <footer>
+      <!-- Copyright as per assignment -->
+      <p>&copy; 2026 Jens Portfolio. All rights reserved.</p>
+      <!-- Contact, policy and terms of service placeholder as per assignment -->
+      <p>
+        <a href="mailto:jens.lahti0176@stud.hkr.se">Contact me</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">Privacy Policy</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">Terms of Service</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+/* Seed - Jens Lahti Color #219EBC */
+
+/* Root variables for consistent theming including assigned Seed color */
+:root {
+  --color-primary: #219ebc; /* Seed color used for primary elements like header, footer and button */
+  --color-accent: #495057;
+  --color-bg: #ffffff;
+  --color-text: #333333;
+  --font-main: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  background-color: var(
+    --color-primary
+  ); /* Use Seed color for header background */
+  color: var(--color-bg);
+  padding: 1.3rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--color-bg);
+}
+
+/* Navigation list styles */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+/* Navigation link styles */
+nav a {
+  color: var(--color-bg);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.5s;
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--color-accent);
+}
+
+/* Body styles */
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Main content styles */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Specific h2 style for introduction header */
+#introduction h2 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+section {
+  padding: 1.5rem 1rem;
+}
+
+/* General h2 style for section headers */
+section h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Biography styling */
+.bio {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.3rem;
+  margin-top: 2rem;
+}
+
+.bio-text {
+  flex: 2;
+}
+
+/* Profile picture in biography styling */
+.bio img {
+  flex: 1;
+  max-width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#about-me h3 {
+  font-size: 1.2rem;
+}
+
+#about-me ul {
+  padding: 1.3rem;
+}
+
+#my-skills {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  max-width: 500px;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+table caption {
+  caption-side: top;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+table th,
+table td {
+  border: 1px solid var(--color-text);
+  padding: 0.7rem;
+  text-align: left;
+}
+
+thead th {
+  /* Use Seed color for table header background */
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+/* Gallery styling */
+#gallery {
+  padding: 1.3rem;
+}
+
+.gallery-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.9rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-images img {
+  max-width: 350px;
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-images img:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s;
+}
+
+/* Contact form styling */
+#contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 1rem auto;
+  padding: 1.5rem;
+}
+
+#contact label {
+  font-weight: bold;
+}
+
+#contact input,
+#contact textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--color-text);
+  border-radius: 5px;
+  font: inherit;
+}
+
+#contact textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 5px var(--color-accent);
+  transition:
+    box-shadow 0.5s,
+    border-color 0.5s;
+}
+
+#contact button {
+  /* Use Seed color for button background */
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  padding: 0.7rem 1.3rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font: inherit;
+  transition: background-color 0.5s;
+}
+#contact button:hover,
+#contact button:focus {
+  background-color: var(--color-accent);
+}
+
+/* Footer styling including assigned Seed color */
+footer {
+  /* Use Seed color for footer background */
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  text-align: center;
+  padding: 0.7rem;
+}
+
+footer a {
+  color: var(--color-bg);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.5s;
+}
+footer a:hover,
+footer a:focus {
+  color: var(--color-accent);
+}
+
+/* Responsive styles making the page adjust to different screen sizes */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  #introduction h2 {
+    font-size: 2rem;
+  }
+
+  .bio {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bio img {
+    max-width: 200px;
+    height: 200px;
+  }
+
+  .gallery-images {
+    gap: 1rem;
+  }
+
+  .gallery-images img {
+    max-width: 100%;
+  }
+}
