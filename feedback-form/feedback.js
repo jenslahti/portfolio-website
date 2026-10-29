@@ -15,28 +15,54 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const isNameValid = validateFullName();
+  const isEmailValid = validateEmail();
 
-  if (isNameValid) {
-    console.log("Form is valid! " + " Name:", nameInput.value);
+  if (isNameValid && isEmailValid) {
+    console.log(
+      "Form is valid! " +
+        " Name: " +
+        nameInput.value +
+        " Email: " +
+        emailInput.value,
+    );
   }
 });
 
 function validateFullName() {
   const fullNameValue = nameInput.value.trim();
   if (fullNameValue === "") {
-    nameError.textContent = "Name is required.";
+    nameError.textContent = "Full name is required.";
     return false;
   }
   if (fullNameValue.length < 2) {
-    nameError.textContent = "Name must be at least 2 characters long.";
+    nameError.textContent = "Full name must be at least 2 characters long.";
     return false;
   }
   const nameRegex = /^[\p{L}\s'-]+$/u;
   if (!nameRegex.test(fullNameValue)) {
     nameError.textContent =
-      "Name can only contain international letters, spaces, apostrophes (') and hyphens (-).";
+      "Full name can only contain international letters, spaces, apostrophes (') and hyphens (-).";
     return false;
   }
   nameError.textContent = "";
+  return true;
+}
+
+function validateEmail() {
+  const emailValue = emailInput.value.trim();
+
+  if (emailValue === "") {
+    emailError.textContent = "Email is required.";
+    return false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailValue)) {
+    emailError.textContent =
+      "Please enter a valid email address including the '@' symbol and a domain.";
+    return false;
+  }
+
+  emailError.textContent = "";
   return true;
 }
