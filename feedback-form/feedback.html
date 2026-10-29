@@ -24,8 +24,9 @@
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
 
+          <label for="feedback-topic">Topic of interest:</label>
           <select id="feedback-topic" name="feedback-topic" required>
-            <option value="">Topic of interest</option>
+            <option value="">Choose topic..</option>
             <option value="bug">Bug Report</option>
             <option value="feature">Feature Request</option>
             <option value="general">General Feedback</option>
@@ -40,8 +41,10 @@
             name="website"
             placeholder="https://example.com"
           />
-
-          <button type="submit">Submit</button>
+          <div class="form-buttons">
+            <button type="submit" id="btnSubmit">Submit</button>
+            <button type="reset" id="btnClear">Clear</button>
+          </div>
         </form>
       </section>
     </main>

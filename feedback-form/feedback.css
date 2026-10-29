@@ -44,12 +44,63 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  flex: 1;
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#feedback-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+#feedback-section h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.form-buttons button {
+  flex: 1;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#btnSubmit {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+#btnClear {
+  background-color: e8e8e8;
+  color: var(--color-text);
 }
 
 /* Footer styling including assigned Seed color */
