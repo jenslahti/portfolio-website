@@ -16,14 +16,17 @@ form.addEventListener("submit", function (event) {
 
   const isNameValid = validateFullName();
   const isEmailValid = validateEmail();
+  const isTopicValid = validateTopic();
 
-  if (isNameValid && isEmailValid) {
+  if (isNameValid && isEmailValid && isTopicValid) {
     console.log(
       "Form is valid! " +
         " Name: " +
         nameInput.value +
         " Email: " +
-        emailInput.value,
+        emailInput.value +
+        " Topic: " +
+        topicInput.value,
     );
   }
 });
@@ -64,5 +67,17 @@ function validateEmail() {
   }
 
   emailError.textContent = "";
+  return true;
+}
+
+function validateTopic() {
+  const topicValue = topicInput.value.trim();
+
+  if (topicValue === "") {
+    topicError.textContent = "Topic of interest is required.";
+    return false;
+  }
+
+  topicError.textContent = "";
   return true;
 }
