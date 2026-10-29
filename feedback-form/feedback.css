@@ -1,0 +1,73 @@
+/* Seed - Jens Lahti Color #219EBC */
+
+/* Root variables for consistent theming including assigned Seed color */
+:root {
+  --color-primary: #219ebc; /* Seed color used for primary elements like header, footer and button */
+  --color-accent: #495057;
+  --color-bg: #ffffff;
+  --color-text: #333333;
+  --font-main: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  background-color: var(
+    --color-primary
+  ); /* Use Seed color for header background */
+  color: var(--color-bg);
+  padding: 1.3rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--color-bg);
+}
+
+/* Body styles */
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Footer styling including assigned Seed color */
+footer {
+  /* Use Seed color for footer background */
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  text-align: center;
+  padding: 0.7rem;
+}
+
+footer a {
+  color: var(--color-bg);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.5s;
+}
+footer a:hover,
+footer a:focus {
+  color: var(--color-accent);
+}

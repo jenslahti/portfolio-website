@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Jens Portfolio - Feedback</h1>
+    </header>
+    <main>
+      <section id="feedback-section">
+        <h2>Send Feedback</h2>
+        <p>
+          We value your feedback! Please fill out the form below to share your
+          thoughts and suggestions.
+        </p>
+        <form id="feedback-form">
+          <label for="name">Full name:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <select id="feedback-topic" name="feedback-topic" required>
+            <option value="">Topic of interest</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="general">General Feedback</option>
+          </select>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <label for="website">Website:</label>
+          <input
+            type="url"
+            id="website"
+            name="website"
+            placeholder="https://example.com"
+          />
+
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <!-- Copyright as per assignment -->
+      <p>&copy; 2026 Jens Portfolio. All rights reserved.</p>
+      <!-- Contact, policy and terms of service placeholder as per assignment -->
+      <p>
+        <a href="mailto:jens.lahti0176@stud.hkr.se">Contact me</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">Privacy Policy</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">Terms of Service</a>
+      </p>
+    </footer>
+    <script src="feedback.js"></script>
+  </body>
+</html>
