@@ -24,8 +24,15 @@ form.addEventListener("submit", function (event) {
   const isEmailValid = validateEmail();
   const isTopicValid = validateTopic();
   const isMessageValid = validateMessage();
+  const isWebsiteValid = validateWebsite();
 
-  if (isNameValid && isEmailValid && isTopicValid && isMessageValid) {
+  if (
+    isNameValid &&
+    isEmailValid &&
+    isTopicValid &&
+    isMessageValid &&
+    isWebsiteValid
+  ) {
     console.log(
       "Form is valid! " +
         " Name: " +
@@ -35,7 +42,9 @@ form.addEventListener("submit", function (event) {
         " Topic: " +
         topicInput.value +
         " Message: " +
-        messageInput.value,
+        messageInput.value +
+        " Website: " +
+        websiteInput.value,
     );
   }
 });
@@ -128,4 +137,19 @@ function updateMessageCounter() {
     messageCounter.classList.add("ok");
     messageCounter.classList.remove("not-ok");
   }
+}
+
+function validateWebsite() {
+  const websiteValue = websiteInput.value.trim();
+  if (websiteValue === "") {
+    websiteError.textContent = "";
+    return true;
+  }
+  if (!websiteInput.checkValidity()) {
+    websiteError.textContent =
+      "Please enter a valid URL, including https:// (e.g. https://example.com).";
+    return false;
+  }
+  websiteError.textContent = "";
+  return true;
 }
