@@ -11,14 +11,21 @@ const topicError = document.getElementById("topic-error");
 const messageError = document.getElementById("message-error");
 const websiteError = document.getElementById("website-error");
 
+const messageCounter = document.getElementById("message-counter");
+const MIN_MESSAGE_LENGTH = 15;
+
+messageInput.addEventListener("input", updateMessageCounter);
+updateMessageCounter();
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const isNameValid = validateFullName();
   const isEmailValid = validateEmail();
   const isTopicValid = validateTopic();
+  const isMessageValid = validateMessage();
 
-  if (isNameValid && isEmailValid && isTopicValid) {
+  if (isNameValid && isEmailValid && isTopicValid && isMessageValid) {
     console.log(
       "Form is valid! " +
         " Name: " +
@@ -26,7 +33,9 @@ form.addEventListener("submit", function (event) {
         " Email: " +
         emailInput.value +
         " Topic: " +
-        topicInput.value,
+        topicInput.value +
+        " Message: " +
+        messageInput.value,
     );
   }
 });
@@ -80,4 +89,43 @@ function validateTopic() {
 
   topicError.textContent = "";
   return true;
+}
+
+function validateMessage() {
+  const messageValue = messageInput.value.trim();
+
+  if (messageValue === "") {
+    messageError.textContent = "Message is required.";
+    return false;
+  }
+  if (messageValue.length < MIN_MESSAGE_LENGTH) {
+    messageError.textContent = "Message must be at least 15 characters long.";
+    return false;
+  }
+
+  messageError.textContent = "";
+  return true;
+}
+
+// TODO: add max message length as well.
+function updateMessageCounter() {
+  const messageLength = messageInput.value.trim().length;
+  const remainingChars = MIN_MESSAGE_LENGTH - messageLength;
+
+  if (messageLength < MIN_MESSAGE_LENGTH) {
+    messageCounter.textContent =
+      messageLength +
+      " / " +
+      MIN_MESSAGE_LENGTH +
+      " characters - " +
+      remainingChars +
+      " more needed.";
+    messageCounter.classList.add("not-ok");
+    messageCounter.classList.remove("ok");
+  } else {
+    messageCounter.textContent =
+      messageLength + " characters. Minimum characters (15) reached.";
+    messageCounter.classList.add("ok");
+    messageCounter.classList.remove("not-ok");
+  }
 }

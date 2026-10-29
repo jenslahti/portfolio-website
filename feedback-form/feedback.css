@@ -79,6 +79,18 @@ main {
   gap: 0.5rem;
 }
 
+.character-counter {
+  font-size: 0.8rem;
+}
+
+.character-counter.ok {
+  color: #2e7d32;
+}
+
+.character-counter.not-ok {
+  color: #c62828;
+}
+
 .form-buttons {
   display: flex;
   gap: 1rem;
