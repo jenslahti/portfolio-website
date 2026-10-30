@@ -14,6 +14,8 @@ const websiteError = document.getElementById("website-error");
 const messageCounter = document.getElementById("message-counter");
 const MIN_MESSAGE_LENGTH = 15;
 
+const formSuccess = document.getElementById("form-success");
+
 messageInput.addEventListener("input", updateMessageCounter);
 updateMessageCounter();
 
@@ -46,8 +48,34 @@ form.addEventListener("submit", function (event) {
         " Website: " +
         websiteInput.value,
     );
+
+    const fullNameValue = nameInput.value.trim();
+    form.reset();
+    showSuccessMessage(fullNameValue);
   }
 });
+
+function showSuccessMessage(fullNameValue) {
+  formSuccess.textContent = "Thanks for your feedback, " + fullNameValue + "!";
+
+  setTimeout(() => {
+    formSuccess.textContent = "";
+  }, 4000);
+}
+
+form.addEventListener("reset", resetForm);
+
+function resetForm() {
+  nameError.textContent = "";
+  emailError.textContent = "";
+  topicError.textContent = "";
+  messageError.textContent = "";
+  websiteError.textContent = "";
+
+  formSuccess.textContent = "";
+
+  setTimeout(updateMessageCounter, 0);
+}
 
 function validateFullName() {
   const fullNameValue = nameInput.value.trim();
