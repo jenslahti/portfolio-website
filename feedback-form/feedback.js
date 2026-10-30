@@ -100,7 +100,7 @@ function validateFullName() {
     );
     return false;
   }
-  nameError.textContent = "";
+  clearFieldError(nameInput, nameError);
   return true;
 }
 
@@ -122,7 +122,7 @@ function validateEmail() {
     return false;
   }
 
-  emailError.textContent = "";
+  clearFieldError(emailInput, emailError);
   return true;
 }
 
@@ -134,7 +134,7 @@ function validateTopic() {
     return false;
   }
 
-  topicError.textContent = "";
+  clearFieldError(topicInput, topicError);
   return true;
 }
 
@@ -154,7 +154,7 @@ function validateMessage() {
     return false;
   }
 
-  messageError.textContent = "";
+  clearFieldError(messageInput, messageError);
   return true;
 }
 
@@ -162,7 +162,7 @@ function validateWebsite() {
   const websiteValue = websiteInput.value.trim();
   if (websiteValue === "") {
     websiteError.textContent = "";
-    websiteInput.classList.remove("invalid");
+    websiteInput.classList.remove("valid", "invalid");
     websiteInput.removeAttribute("aria-invalid");
     return true;
   }
@@ -174,7 +174,7 @@ function validateWebsite() {
     );
     return false;
   }
-  websiteError.textContent = "";
+  clearFieldError(websiteInput, websiteError);
   return true;
 }
 
@@ -212,4 +212,11 @@ function showFieldError(input, errorElement, errorMessage) {
   input.classList.add("invalid");
   input.classList.remove("valid");
   input.setAttribute("aria-invalid", "true");
+}
+
+function clearFieldError(input, errorElement) {
+  errorElement.textContent = "";
+  input.classList.remove("invalid");
+  input.classList.add("valid");
+  input.removeAttribute("aria-invalid");
 }
