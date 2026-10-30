@@ -3,6 +3,7 @@
 /* Root variables for consistent theming including assigned Seed color */
 :root {
   --color-primary: #219ebc; /* Seed color used for primary elements like header, footer and button */
+  --color-primary-dark: #1a7f99;
   --color-accent: #495057;
   --color-bg: #ffffff;
   --color-text: #333333;
@@ -66,20 +67,40 @@ main {
 }
 
 #feedback-section {
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
+  background-color: #f4f6f8;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-#feedback-section h2 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
+.form-header {
+  background-color: var(--color-primary-dark);
+  color: var(--color-bg);
+  padding: 1.5rem 2rem;
+  text-align: center;
 }
 
 #feedback-form {
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
   gap: 0.5rem;
+}
+
+#feedback-form label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-text);
+  margin-top: 0.3rem;
+}
+
+#feedback-form label:first-child {
+  margin-top: 0;
 }
 
 #feedback-form input,
@@ -99,7 +120,7 @@ main {
 #feedback-form input:focus,
 #feedback-form textarea:focus,
 #feedback-form select:focus {
-  outline: 3px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -121,7 +142,16 @@ main {
 .form-success {
   color: var(--color-success);
   font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
   margin-top: 0.5rem;
+}
+
+.form-success:not(:empty) {
+  padding: 0.5rem;
+  background-color: #e8f5e9;
+  border: 1px solid var(--color-success);
+  border-radius: 4px;
 }
 
 .error-message {
@@ -151,9 +181,17 @@ main {
 
 .form-buttons button {
   flex: 1;
-  padding: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
   font-family: inherit;
   font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
   cursor: pointer;
 }
 
@@ -165,6 +203,17 @@ main {
 #btnClear {
   background-color: #e8e8e8;
   color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+#btnSubmit:hover,
+#btnSubmit:focus {
+  background-color: var(--color-primary-dark);
+}
+
+#btnClear:hover {
+  background-color: #f0f0f0;
+  border-color: var(--color-text);
 }
 
 /* Footer styling including assigned Seed color */
