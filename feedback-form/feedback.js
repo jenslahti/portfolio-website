@@ -144,12 +144,15 @@ function validateMessage() {
   return true;
 }
 
-// TODO: add max message length as well.
 function updateMessageCounter() {
   const messageLength = messageInput.value.trim().length;
   const remainingChars = MIN_MESSAGE_LENGTH - messageLength;
 
-  if (messageLength < MIN_MESSAGE_LENGTH) {
+  if (messageLength === 0) {
+    messageCounter.textContent = "0 / " + MIN_MESSAGE_LENGTH + " characters.";
+    messageCounter.classList.remove("not-ok");
+    messageCounter.classList.remove("ok");
+  } else if (messageLength < MIN_MESSAGE_LENGTH) {
     messageCounter.textContent =
       messageLength +
       " / " +

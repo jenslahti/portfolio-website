@@ -19,15 +19,32 @@
         </p>
         <form id="feedback-form" novalidate>
           <label for="name">Full name:</label>
-          <input type="text" id="name" name="name" required />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            aria-describedby="name-error"
+          />
           <span class="error-message" id="name-error"></span>
 
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-describedby="email-error"
+          />
           <span class="error-message" id="email-error"></span>
 
           <label for="feedback-topic">Topic of interest:</label>
-          <select id="feedback-topic" name="feedback-topic" required>
+          <select
+            id="feedback-topic"
+            name="feedback-topic"
+            required
+            aria-describedby="topic-error"
+          >
             <option value="">Choose topic..</option>
             <option value="bug">Bug Report</option>
             <option value="feature">Feature Request</option>
@@ -35,7 +52,12 @@
           </select>
           <span class="error-message" id="topic-error"></span>
           <label for="message">Message:</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            required
+            aria-describedby="message-counter message-error"
+          ></textarea>
           <span id="message-counter" class="character-counter"></span>
           <span class="error-message" id="message-error"></span>
 
@@ -45,6 +67,7 @@
             id="website"
             name="website"
             placeholder="https://example.com"
+            aria-describedby="website-error"
           />
           <span class="error-message" id="website-error"></span>
           <div class="form-buttons">
