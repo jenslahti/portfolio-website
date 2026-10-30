@@ -80,17 +80,24 @@ function resetForm() {
 function validateFullName() {
   const fullNameValue = nameInput.value.trim();
   if (fullNameValue === "") {
-    nameError.textContent = "Full name is required.";
+    showFieldError(nameInput, nameError, "Full name is required.");
     return false;
   }
   if (fullNameValue.length < 2) {
-    nameError.textContent = "Full name must be at least 2 characters long.";
+    showFieldError(
+      nameInput,
+      nameError,
+      "Full name must be at least 2 characters long.",
+    );
     return false;
   }
   const nameRegex = /^[\p{L}\s'-]+$/u;
   if (!nameRegex.test(fullNameValue)) {
-    nameError.textContent =
-      "Full name can only contain international letters, spaces, apostrophes (') and hyphens (-).";
+    showFieldError(
+      nameInput,
+      nameError,
+      "Full name can only contain international letters, spaces, apostrophes (') and hyphens (-).",
+    );
     return false;
   }
   nameError.textContent = "";
@@ -101,14 +108,17 @@ function validateEmail() {
   const emailValue = emailInput.value.trim();
 
   if (emailValue === "") {
-    emailError.textContent = "Email is required.";
+    showFieldError(emailInput, emailError, "Email is required.");
     return false;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(emailValue)) {
-    emailError.textContent =
-      "Please enter a valid email address including the '@' symbol and a domain.";
+    showFieldError(
+      emailInput,
+      emailError,
+      "Please enter a valid email address including the '@' symbol and a domain.",
+    );
     return false;
   }
 
@@ -120,7 +130,7 @@ function validateTopic() {
   const topicValue = topicInput.value.trim();
 
   if (topicValue === "") {
-    topicError.textContent = "Topic of interest is required.";
+    showFieldError(topicInput, topicError, "Topic of interest is required.");
     return false;
   }
 
@@ -132,15 +142,39 @@ function validateMessage() {
   const messageValue = messageInput.value.trim();
 
   if (messageValue === "") {
-    messageError.textContent = "Message is required.";
+    showFieldError(messageInput, messageError, "Message is required.");
     return false;
   }
   if (messageValue.length < MIN_MESSAGE_LENGTH) {
-    messageError.textContent = "Message must be at least 15 characters long.";
+    showFieldError(
+      messageInput,
+      messageError,
+      "Message must be at least 15 characters long.",
+    );
     return false;
   }
 
   messageError.textContent = "";
+  return true;
+}
+
+function validateWebsite() {
+  const websiteValue = websiteInput.value.trim();
+  if (websiteValue === "") {
+    websiteError.textContent = "";
+    websiteInput.classList.remove("invalid");
+    websiteInput.removeAttribute("aria-invalid");
+    return true;
+  }
+  if (!websiteInput.checkValidity()) {
+    showFieldError(
+      websiteInput,
+      websiteError,
+      "Please enter a valid URL, including https:// (e.g. https://example.com).",
+    );
+    return false;
+  }
+  websiteError.textContent = "";
   return true;
 }
 
@@ -149,7 +183,10 @@ function updateMessageCounter() {
   const remainingChars = MIN_MESSAGE_LENGTH - messageLength;
 
   if (messageLength === 0) {
-    messageCounter.textContent = "0 / " + MIN_MESSAGE_LENGTH + " characters.";
+    messageCounter.textContent =
+      "0 / " +
+      MIN_MESSAGE_LENGTH +
+      " characters. Minimum 15 characters required.";
     messageCounter.classList.remove("not-ok");
     messageCounter.classList.remove("ok");
   } else if (messageLength < MIN_MESSAGE_LENGTH) {
@@ -157,7 +194,7 @@ function updateMessageCounter() {
       messageLength +
       " / " +
       MIN_MESSAGE_LENGTH +
-      " characters - " +
+      " minimum characters - " +
       remainingChars +
       " more needed.";
     messageCounter.classList.add("not-ok");
@@ -170,17 +207,9 @@ function updateMessageCounter() {
   }
 }
 
-function validateWebsite() {
-  const websiteValue = websiteInput.value.trim();
-  if (websiteValue === "") {
-    websiteError.textContent = "";
-    return true;
-  }
-  if (!websiteInput.checkValidity()) {
-    websiteError.textContent =
-      "Please enter a valid URL, including https:// (e.g. https://example.com).";
-    return false;
-  }
-  websiteError.textContent = "";
-  return true;
+function showFieldError(input, errorElement, errorMessage) {
+  errorElement.textContent = errorMessage;
+  input.classList.add("invalid");
+  input.classList.remove("valid");
+  input.setAttribute("aria-invalid", "true");
 }
