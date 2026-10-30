@@ -4,17 +4,14 @@ const emailInput = document.getElementById("email");
 const topicInput = document.getElementById("feedback-topic");
 const messageInput = document.getElementById("message");
 const websiteInput = document.getElementById("website");
-
 const nameError = document.getElementById("name-error");
 const emailError = document.getElementById("email-error");
 const topicError = document.getElementById("topic-error");
 const messageError = document.getElementById("message-error");
 const websiteError = document.getElementById("website-error");
-
 const messageCounter = document.getElementById("message-counter");
-const MIN_MESSAGE_LENGTH = 15;
-
 const formSuccess = document.getElementById("form-success");
+const MIN_MESSAGE_LENGTH = 15;
 
 messageInput.addEventListener("input", updateMessageCounter);
 updateMessageCounter();
@@ -35,20 +32,6 @@ form.addEventListener("submit", function (event) {
     isMessageValid &&
     isWebsiteValid
   ) {
-    console.log(
-      "Form is valid! " +
-        " Name: " +
-        nameInput.value +
-        " Email: " +
-        emailInput.value +
-        " Topic: " +
-        topicInput.value +
-        " Message: " +
-        messageInput.value +
-        " Website: " +
-        websiteInput.value,
-    );
-
     const fullNameValue = nameInput.value.trim();
     form.reset();
     showSuccessMessage(fullNameValue);
@@ -66,15 +49,20 @@ function showSuccessMessage(fullNameValue) {
 form.addEventListener("reset", resetForm);
 
 function resetForm() {
-  nameError.textContent = "";
-  emailError.textContent = "";
-  topicError.textContent = "";
-  messageError.textContent = "";
-  websiteError.textContent = "";
+  resetFieldState(nameInput, nameError);
+  resetFieldState(emailInput, emailError);
+  resetFieldState(topicInput, topicError);
+  resetFieldState(messageInput, messageError);
+  resetFieldState(websiteInput, websiteError);
 
   formSuccess.textContent = "";
-
   setTimeout(updateMessageCounter, 0);
+}
+
+function resetFieldState(input, errorElement) {
+  errorElement.textContent = "";
+  input.classList.remove("valid", "invalid");
+  input.removeAttribute("aria-invalid");
 }
 
 function validateFullName() {
@@ -161,9 +149,7 @@ function validateMessage() {
 function validateWebsite() {
   const websiteValue = websiteInput.value.trim();
   if (websiteValue === "") {
-    websiteError.textContent = "";
-    websiteInput.classList.remove("valid", "invalid");
-    websiteInput.removeAttribute("aria-invalid");
+    resetFieldState(websiteInput, websiteError);
     return true;
   }
   if (!websiteInput.checkValidity()) {
