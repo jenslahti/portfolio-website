@@ -26,20 +26,16 @@ html {
 
 /* Header styles */
 header {
-  background-color: var(
-    --color-primary
-  ); /* Use Seed color for header background */
+  background-color: var(--color-primary);
   color: var(--color-bg);
   padding: 1.3rem;
   align-items: center;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 2rem;
 }
 
 header h1 {
   font-size: 2rem;
-  color: var(--color-bg);
 }
 
 /* Body styles */
@@ -55,11 +51,10 @@ body {
 
 main {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
   padding: 0 1rem;
   flex: 1;
   width: 100%;
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,8 +64,6 @@ main {
 #feedback-section {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
-  padding: 0rem;
   background-color: #f4f6f8;
   border: 2px solid var(--color-border);
   border-radius: 8px;
@@ -92,12 +85,11 @@ main {
 }
 
 .form-header {
-  background-color: var(--color-primary-dark);
+  background-color: var(--color-primary);
   color: var(--color-bg);
   padding: 1.5rem 2rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
 #feedback-form {
@@ -109,8 +101,6 @@ main {
 
 #feedback-form label {
   font-weight: bold;
-  font-size: 1rem;
-  color: var(--color-text);
   margin-top: 0.3rem;
 }
 
@@ -156,7 +146,6 @@ main {
 
 .form-success {
   color: var(--color-success);
-  font-size: 1rem;
   font-weight: bold;
   text-align: center;
   margin-top: 0.5rem;
@@ -205,7 +194,6 @@ main {
   border-radius: 4px;
   transition:
     background-color 0.3s,
-    color 0.3s,
     border-color 0.3s;
   cursor: pointer;
 }
@@ -249,4 +237,47 @@ footer a {
 footer a:hover,
 footer a:focus {
   color: var(--color-accent);
+}
+
+/* Responsive styles making the page adjust to different screen sizes */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    margin-bottom: 1rem;
+  }
+
+  .form-header {
+    padding: 1rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.1rem;
+  }
+
+  #feedback-form {
+    padding: 1rem;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
 }
