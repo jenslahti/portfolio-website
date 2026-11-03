@@ -1,3 +1,4 @@
+// DOM references selected once to avoid repeated DOM queries
 const form = document.getElementById("feedback-form");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
@@ -13,18 +14,26 @@ const messageCounter = document.getElementById("message-counter");
 const formSuccess = document.getElementById("form-success");
 const MIN_MESSAGE_LENGTH = 15;
 
+// Event listener for message character counter update
 messageInput.addEventListener("input", updateMessageCounter);
 updateMessageCounter();
 
+// Event listeners for blur events to validate each input field
 nameInput.addEventListener("blur", validateFullName);
 emailInput.addEventListener("blur", validateEmail);
 topicInput.addEventListener("blur", validateTopic);
 messageInput.addEventListener("blur", validateMessage);
 websiteInput.addEventListener("blur", validateWebsite);
 
+// Event listener for form reset to clear error messages and reset field states
+form.addEventListener("reset", resetForm);
+
+// Event listener for form submission to validate all fields and show success message
 form.addEventListener("submit", function (event) {
+  // Stop the page from reloading
   event.preventDefault();
 
+  // Validate all fields and store the results
   const isNameValid = validateFullName();
   const isEmailValid = validateEmail();
   const isTopicValid = validateTopic();
@@ -38,12 +47,15 @@ form.addEventListener("submit", function (event) {
     isMessageValid &&
     isWebsiteValid
   ) {
+    // Save name before reset for feedback message
     const fullNameValue = nameInput.value.trim();
+    // Triggers resetForm function to clear all fields and error messages
     form.reset();
     showSuccessMessage(fullNameValue);
   }
 });
 
+// Function to show a success message after successful form submission, clearing after 4 seconds per assignment requirements
 function showSuccessMessage(fullNameValue) {
   formSuccess.textContent = "Thanks for your feedback, " + fullNameValue + "!";
 
@@ -52,8 +64,7 @@ function showSuccessMessage(fullNameValue) {
   }, 4000);
 }
 
-form.addEventListener("reset", resetForm);
-
+// Function to reset the form, clearing all error messages and resetting field states
 function resetForm() {
   resetFieldState(nameInput, nameError);
   resetFieldState(emailInput, emailError);
@@ -62,9 +73,11 @@ function resetForm() {
   resetFieldState(websiteInput, websiteError);
 
   formSuccess.textContent = "";
+  // Use setTimeout for the message counter to be updated after the form reset
   setTimeout(updateMessageCounter, 0);
 }
 
+// Function to reset the state of a specific input field
 function resetFieldState(input, errorElement) {
   errorElement.textContent = "";
   input.classList.remove("valid", "invalid");
@@ -143,7 +156,7 @@ function validateMessage() {
     showFieldError(
       messageInput,
       messageError,
-      "Message must be at least 15 characters long.",
+      "Message must be at least " + MIN_MESSAGE_LENGTH + " characters long.",
     );
     return false;
   }
@@ -154,6 +167,7 @@ function validateMessage() {
 
 function validateWebsite() {
   const websiteValue = websiteInput.value.trim();
+  // Website field is optional making empty field valid
   if (websiteValue === "") {
     resetFieldState(websiteInput, websiteError);
     return true;
@@ -170,6 +184,7 @@ function validateWebsite() {
   return true;
 }
 
+// Function to update the message character counter based on the current input length
 function updateMessageCounter() {
   const messageLength = messageInput.value.trim().length;
   const remainingChars = MIN_MESSAGE_LENGTH - messageLength;
@@ -178,9 +193,10 @@ function updateMessageCounter() {
     messageCounter.textContent =
       "0 / " +
       MIN_MESSAGE_LENGTH +
-      " characters. Minimum 15 characters required.";
-    messageCounter.classList.remove("not-ok");
-    messageCounter.classList.remove("ok");
+      " characters. Minimum " +
+      MIN_MESSAGE_LENGTH +
+      " characters required.";
+    messageCounter.classList.remove("not-ok", "ok");
   } else if (messageLength < MIN_MESSAGE_LENGTH) {
     messageCounter.textContent =
       messageLength +
@@ -193,12 +209,16 @@ function updateMessageCounter() {
     messageCounter.classList.remove("ok");
   } else {
     messageCounter.textContent =
-      messageLength + " characters. Minimum characters (15) reached.";
+      messageLength +
+      " characters. Minimum characters (" +
+      MIN_MESSAGE_LENGTH +
+      ") reached.";
     messageCounter.classList.add("ok");
     messageCounter.classList.remove("not-ok");
   }
 }
 
+// Function to show an error message for a specific input field, adding class invalid
 function showFieldError(input, errorElement, errorMessage) {
   errorElement.textContent = errorMessage;
   input.classList.add("invalid");
@@ -206,6 +226,7 @@ function showFieldError(input, errorElement, errorMessage) {
   input.setAttribute("aria-invalid", "true");
 }
 
+// Function to clear the error message for a specific input field, adding class valid
 function clearFieldError(input, errorElement) {
   errorElement.textContent = "";
   input.classList.remove("invalid");
