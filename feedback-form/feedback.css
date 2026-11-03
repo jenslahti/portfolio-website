@@ -76,6 +76,19 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+#feedback-section:has(.invalid) {
+  border-color: var(--color-error);
+  box-shadow: 0 0 10px var(--color-error);
+}
+
+#feedback-section:has(.form-success:not(:empty)) {
+  border-color: var(--color-success);
+  box-shadow: 0 0 10px var(--color-success);
 }
 
 .form-header {
@@ -83,6 +96,8 @@ main {
   color: var(--color-bg);
   padding: 1.5rem 2rem;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 #feedback-form {

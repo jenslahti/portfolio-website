@@ -16,6 +16,12 @@ const MIN_MESSAGE_LENGTH = 15;
 messageInput.addEventListener("input", updateMessageCounter);
 updateMessageCounter();
 
+nameInput.addEventListener("blur", validateFullName);
+emailInput.addEventListener("blur", validateEmail);
+topicInput.addEventListener("blur", validateTopic);
+messageInput.addEventListener("blur", validateMessage);
+websiteInput.addEventListener("blur", validateWebsite);
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
