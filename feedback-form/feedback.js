@@ -13,6 +13,7 @@ const websiteError = document.getElementById("website-error");
 const messageCounter = document.getElementById("message-counter");
 const formSuccess = document.getElementById("form-success");
 const MIN_MESSAGE_LENGTH = 15;
+const MAX_MESSAGE_LENGTH = 40;
 
 // Event listener for message character counter update
 messageInput.addEventListener("input", updateMessageCounter);
@@ -152,11 +153,15 @@ function validateMessage() {
     showFieldError(messageInput, messageError, "Message is required.");
     return false;
   }
-  if (messageValue.length < MIN_MESSAGE_LENGTH) {
+  if (messageValue.length < MIN_MESSAGE_LENGTH || messageValue.length > 40) {
     showFieldError(
       messageInput,
       messageError,
-      "Message must be at least " + MIN_MESSAGE_LENGTH + " characters long.",
+      "Message must be between " +
+        MIN_MESSAGE_LENGTH +
+        " and " +
+        MAX_MESSAGE_LENGTH +
+        " characters long.",
     );
     return false;
   }
@@ -192,19 +197,24 @@ function updateMessageCounter() {
   if (messageLength === 0) {
     messageCounter.textContent =
       "0 / " +
-      MIN_MESSAGE_LENGTH +
+      MAX_MESSAGE_LENGTH +
       " characters. Minimum " +
       MIN_MESSAGE_LENGTH +
       " characters required.";
     messageCounter.classList.remove("not-ok", "ok");
-  } else if (messageLength < MIN_MESSAGE_LENGTH) {
+  } else if (
+    messageLength < MIN_MESSAGE_LENGTH ||
+    messageLength > MAX_MESSAGE_LENGTH
+  ) {
     messageCounter.textContent =
       messageLength +
       " / " +
+      MAX_MESSAGE_LENGTH +
+      " - Message must be between " +
       MIN_MESSAGE_LENGTH +
-      " minimum characters - " +
-      remainingChars +
-      " more needed.";
+      " and " +
+      MAX_MESSAGE_LENGTH +
+      " characters long. ";
     messageCounter.classList.add("not-ok");
     messageCounter.classList.remove("ok");
   } else {
